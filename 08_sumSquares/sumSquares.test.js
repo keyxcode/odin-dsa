@@ -17,5 +17,5 @@ test("list to have of squares 1 = 1", () => {
 
 test("list to have of squares 100 + 100 + 100 + 100 = 400", () => {
   const list = [10, [[10], 10], [10]];
-  expect(sumSquares(list)).toBe(100);
+  expect(sumSquares(list)).toBe(400);
 });
