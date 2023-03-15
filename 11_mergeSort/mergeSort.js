@@ -1,28 +1,34 @@
-function mergeSort() {
-  //takes in an array and returns a sorted array, using a recursive merge sort methodology.
-}
-
-function mergeSortedHalves(firstArray, secondArray) {
-  const sumLength = firstArray.length + secondArray.length;
+function mergeSortedHalves(firstHalf, secondHalf) {
   let mergedArray = [];
+  const mergedArrayLength = firstHalf.length + secondHalf.length;
 
-  let i = 0;
-  let j = 0;
-  for (let k = 0; k < sumLength; k++) {
-    if (firstArray[i] <= secondArray[j]) {
-      mergedArray.push(firstArray[i]);
-      i++;
+  for (let i = 0; i < mergedArrayLength; i++) {
+    if (typeof firstHalf[0] === "undefined") {
+      return mergedArray.concat(secondHalf);
+    } else if (typeof secondHalf[0] === "undefined") {
+      return mergedArray.concat(firstHalf);
+    } else if (firstHalf[0] < secondHalf[0]) {
+      mergedArray.push(firstHalf.shift());
     } else {
-      mergedArray.push(secondArray[j]);
-      j++;
+      mergedArray.push(secondHalf.shift());
     }
   }
 
   return mergedArray;
 }
 
-console.log(mergeSortedHalves([1, 3], [2, 4]));
-console.log(mergeSortedHalves([1, 3, 5, 9, 20], [2, 4, 5, 7, 100]));
+function mergeSort(myArray) {
+  //takes in an array and returns a sorted array, using a recursive merge sort methodology.
+  const arrayLength = myArray.length;
+  if (arrayLength === 1) {
+    return myArray;
+  }
+  const midPoint = Math.round(arrayLength / 2);
+  const firstHalf = myArray.slice(0, midPoint);
+  const secondHalf = myArray.slice(midPoint, arrayLength);
+
+  return mergeSortedHalves(mergeSort(firstHalf), mergeSort(secondHalf));
+}
 
 module.exports = {
   mergeSort,
