@@ -109,3 +109,25 @@ describe("#tail", () => {
     });
   });
 });
+
+describe("#at", () => {
+  test("returns the node at the given index", () => {
+    const myList = new LinkedList();
+    myList.prepend(10);
+    myList.prepend(20);
+
+    expect(myList.at(0)).toEqual({
+      value: 20,
+      next: {
+        value: 10,
+        next: null,
+      },
+    });
+    expect(myList.at(1)).toEqual({
+      value: 10,
+      next: null,
+    });
+    expect(myList.at(-1)).toBe("undefined");
+    expect(myList.at(3)).toBe("undefined");
+  });
+});

@@ -47,7 +47,9 @@ class LinkedList {
     return listTail;
   }
 
-  at(index) {}
+  at(index) {
+    if (index < 0 || index > this.length - 1) return;
+  }
 
   pop() {}
 
