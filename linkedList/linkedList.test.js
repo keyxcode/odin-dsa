@@ -1,5 +1,4 @@
 const linkedListModule = require("./linkedList");
-const ListNode = linkedListModule.ListNode;
 const LinkedList = linkedListModule.LinkedList;
 
 describe("#append", () => {
@@ -163,6 +162,11 @@ describe("#contains", () => {
     const myList = new LinkedList();
     myList.prepend(10);
     myList.prepend(20);
+
+    expect(myList.contains(11)).toBe(false);
+  });
+  test("returns false if the list is empty", () => {
+    const myList = new LinkedList();
 
     expect(myList.contains(11)).toBe(false);
   });

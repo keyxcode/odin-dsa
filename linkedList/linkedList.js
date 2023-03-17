@@ -74,7 +74,16 @@ class LinkedList {
     return poppedNode;
   }
 
-  contains(value) {}
+  contains(value) {
+    let current = this.HEAD;
+
+    while (current) {
+      if (current.value === value) return true;
+      current = current.next;
+    }
+
+    return false;
+  }
 
   find(value) {}
 
