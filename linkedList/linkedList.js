@@ -16,7 +16,18 @@ class LinkedList {
   pop() {}
   contains(value) {}
   find(value) {}
-  toString() {}
+  toString() {
+    let listString = "";
+    let listHead = this.head;
+    while (listHead.next !== null) {
+      listString += `[${listHead.value}]->`;
+      listHead = listHead.next;
+      if (listHead.value === null) {
+        listString += "null";
+      }
+    }
+    return listString;
+  }
 }
 
 class ListNode {

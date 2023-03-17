@@ -22,6 +22,6 @@ describe("#toString", () => {
     myList.prepend(20);
     const myListToString = myList.toString();
 
-    expect(myList.toString()).toBe("[10]->[20]->null");
+    expect(myList.toString()).toEqual("[20]->[10]->null");
   });
 });
