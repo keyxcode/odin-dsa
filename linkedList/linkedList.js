@@ -49,6 +49,16 @@ class LinkedList {
 
   at(index) {
     if (index < 0 || index > this.length - 1) return;
+
+    let current = this.HEAD;
+    let currentId = 0;
+    while (current) {
+      if (currentId === index) {
+        return current;
+      }
+      current = current.next;
+      currentId++;
+    }
   }
 
   pop() {}

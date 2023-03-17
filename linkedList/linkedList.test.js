@@ -127,7 +127,7 @@ describe("#at", () => {
       value: 10,
       next: null,
     });
-    expect(myList.at(-1)).toBe("undefined");
-    expect(myList.at(3)).toBe("undefined");
+    expect(myList.at(-1)).toBeFalsy();
+    expect(myList.at(3)).toBeFalsy();
   });
 });
