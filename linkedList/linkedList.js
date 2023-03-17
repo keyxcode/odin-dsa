@@ -61,7 +61,18 @@ class LinkedList {
     }
   }
 
-  pop() {}
+  pop() {
+    if (!this.HEAD) return;
+
+    const indexLastNode = this.length - 1;
+    const poppedNode = this.at(indexLastNode);
+
+    const indexBeforeLastNode = indexLastNode - 1;
+    this.at(indexBeforeLastNode).next = null;
+    this.length--;
+
+    return poppedNode;
+  }
 
   contains(value) {}
 

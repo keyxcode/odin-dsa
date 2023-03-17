@@ -143,8 +143,8 @@ describe("#pop", () => {
       value: 10,
       next: null,
     });
-    expect(myList.size).toBe(1);
-    expect(myList.head).toEqual({
+    expect(myList.size()).toBe(1);
+    expect(myList.head()).toEqual({
       value: 20,
       next: null,
     });
