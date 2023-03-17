@@ -47,3 +47,22 @@ describe("#size", () => {
     expect(myList.size()).toBe(2);
   });
 });
+
+describe("#head", () => {
+  test("returns head after a process of prepending", () => {
+    const myList = new LinkedList();
+    const myHead = new ListNode(20);
+    myList.prepend(10);
+    myList.prepend(myHead);
+
+    expect(myList.head()).toBe(myHead);
+  });
+  test("returns head after a process of appending", () => {
+    const myList = new LinkedList();
+    const myHead = new ListNode(10);
+    myList.append(myHead);
+    myList.append(20);
+
+    expect(myList.head()).toBe(myHead);
+  });
+});
