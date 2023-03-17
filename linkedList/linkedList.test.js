@@ -131,3 +131,22 @@ describe("#at", () => {
     expect(myList.at(3)).toBeFalsy();
   });
 });
+
+describe("#pop", () => {
+  test("removes the last element from the list and returns it", () => {
+    const myList = new LinkedList();
+    myList.prepend(10);
+    myList.prepend(20);
+    const poppedNode = myList.pop();
+
+    expect(poppedNode).toEqual({
+      value: 10,
+      next: null,
+    });
+    expect(myList.size).toBe(1);
+    expect(myList.head).toEqual({
+      value: 20,
+      next: null,
+    });
+  });
+});
