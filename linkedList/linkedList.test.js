@@ -150,3 +150,20 @@ describe("#pop", () => {
     });
   });
 });
+
+describe("#contains", () => {
+  test("returns true if the passed in value is in the list", () => {
+    const myList = new LinkedList();
+    myList.prepend(10);
+    myList.prepend(20);
+
+    expect(myList.contains(10)).toBe(true);
+  });
+  test("returns false if the passed in value is not in the list", () => {
+    const myList = new LinkedList();
+    myList.prepend(10);
+    myList.prepend(20);
+
+    expect(myList.contains(11)).toBe(false);
+  });
+});
