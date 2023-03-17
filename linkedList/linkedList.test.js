@@ -171,3 +171,25 @@ describe("#contains", () => {
     expect(myList.contains(11)).toBe(false);
   });
 });
+
+describe("#find", () => {
+  test("returns the index of the node containing value", () => {
+    const myList = new LinkedList();
+    myList.prepend(10);
+    myList.prepend(20);
+
+    expect(myList.find(10)).toBe(1);
+  });
+  test("returns null if the passed in value is not in the list", () => {
+    const myList = new LinkedList();
+    myList.prepend(10);
+    myList.prepend(20);
+
+    expect(myList.find(11)).toBe(null);
+  });
+  test("returns null if the list is empty", () => {
+    const myList = new LinkedList();
+
+    expect(myList.contains(11)).toBe(null);
+  });
+});
