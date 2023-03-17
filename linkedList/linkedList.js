@@ -3,22 +3,37 @@ class LinkedList {
     this.head = null;
     this.length = 0;
   }
+
   append(value) {
     const newNode = new ListNode(value, null);
+    this.length++;
+
     if (this.head === null) {
       this.head = newNode;
       return;
     }
+
+    let current = this.head;
+    while (current.next) {
+      let next = current.next;
+      current = next;
+    }
+    current.next = newNode;
   }
+
   prepend(value) {
     const newNode = new ListNode(value, this.head);
     this.head = newNode;
     this.length++;
   }
+
   size() {
     return this.length;
   }
-  head() {}
+
+  head() {
+    return this.head;
+  }
   tail() {}
   at(index) {}
   pop() {}
@@ -26,11 +41,11 @@ class LinkedList {
   find(value) {}
   toString() {
     let listString = "";
-    let listHead = this.head;
+    let current = this.head;
 
-    while (listHead) {
-      listString += `[${listHead.value}]->`;
-      listHead = listHead.next;
+    while (current) {
+      listString += `[${current.value}]->`;
+      current = current.next;
     }
     return `${listString}null`;
   }
