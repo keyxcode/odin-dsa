@@ -49,6 +49,11 @@ describe("#size", () => {
 });
 
 describe("#head", () => {
+  test("returns head after list is initialized", () => {
+    const myList = new LinkedList();
+
+    expect(myList.head()).toBe(null);
+  });
   test("returns head after a process of prepending", () => {
     const myList = new LinkedList();
     myList.prepend(10);
@@ -78,6 +83,11 @@ describe("#head", () => {
 });
 
 describe("#tail", () => {
+  test("returns tail after list is initialized", () => {
+    const myList = new LinkedList();
+
+    expect(myList.tail()).toBe(null);
+  });
   test("returns tail after a process of prepending", () => {
     const myList = new LinkedList();
     myList.prepend(10);
