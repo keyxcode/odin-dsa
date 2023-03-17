@@ -85,7 +85,18 @@ class LinkedList {
     return false;
   }
 
-  find(value) {}
+  find(value) {
+    let current = this.HEAD;
+    let index = 0;
+
+    while (current) {
+      if (current.value === value) return index;
+      current = current.next;
+      index++;
+    }
+
+    return null;
+  }
 
   toString() {
     let listString = "";

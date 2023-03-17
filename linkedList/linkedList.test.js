@@ -190,6 +190,6 @@ describe("#find", () => {
   test("returns null if the list is empty", () => {
     const myList = new LinkedList();
 
-    expect(myList.contains(11)).toBe(null);
+    expect(myList.find(11)).toBe(null);
   });
 });
