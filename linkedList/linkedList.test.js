@@ -26,17 +26,6 @@ describe("#prepend", () => {
   });
 });
 
-describe("#toString", () => {
-  test("represents the linked list object as a string", () => {
-    const myList = new LinkedList();
-    myList.prepend(10);
-    myList.prepend(20);
-    const myListToString = myList.toString();
-
-    expect(myList.toString()).toEqual("[20]->[10]->null");
-  });
-});
-
 describe("#size", () => {
   test("returns the total number of nodes", () => {
     const myList = new LinkedList();
@@ -191,5 +180,58 @@ describe("#find", () => {
     const myList = new LinkedList();
 
     expect(myList.find(11)).toBe(null);
+  });
+});
+
+describe("#toString", () => {
+  test("represents the linked list object as a string", () => {
+    const myList = new LinkedList();
+    myList.prepend(10);
+    myList.prepend(20);
+    const myListToString = myList.toString();
+
+    expect(myList.toString()).toEqual("[20]->[10]->null");
+  });
+});
+
+describe("#insertAt", () => {
+  test("inserts a new node with the provided value at the given index", () => {
+    const myList = new LinkedList();
+    myList.prepend(10);
+    myList.prepend(20);
+    myList.prepend(30);
+    myList.insertAt(40, 2);
+
+    expect(myList.at(2)).toEqual({
+      value: 40,
+      next: {
+        value: 30,
+        next: null,
+      },
+    });
+  });
+  test("inserts a new node with the provided value and an index larger than the list length", () => {
+    const myList = new LinkedList();
+    myList.prepend(10);
+    myList.prepend(20);
+    myList.insertAt(40, 4);
+
+    expect(myList.at(2)).toEqual({
+      value: 40,
+      next: {
+        value: 30,
+        next: null,
+      },
+    });
+  });
+});
+
+describe("#removeAt", () => {
+  test("removes the node at the given index", () => {
+    const myList = new LinkedList();
+    myList.prepend(10);
+    myList.prepend(20);
+
+    // expect(myList.removeAt(0)).toEqual();
   });
 });

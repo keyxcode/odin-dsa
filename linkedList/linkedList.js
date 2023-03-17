@@ -108,6 +108,10 @@ class LinkedList {
     }
     return `${listString}null`;
   }
+
+  insertAt(value, index) {}
+
+  removeAt(index) {}
 }
 
 class ListNode {
@@ -116,9 +120,6 @@ class ListNode {
     this.next = next;
   }
 }
-
-l = new LinkedList();
-console.log(l);
 
 module.exports = {
   LinkedList,
