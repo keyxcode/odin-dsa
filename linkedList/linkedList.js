@@ -51,14 +51,11 @@ class LinkedList {
     if (index < 0 || index > this.length - 1) return;
 
     let current = this.HEAD;
-    let currentId = 0;
-    while (current) {
-      if (currentId === index) {
-        return current;
-      }
+    for (let i = 0; i < index; i++) {
       current = current.next;
-      currentId++;
     }
+
+    return current;
   }
 
   pop() {
