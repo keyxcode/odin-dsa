@@ -76,3 +76,26 @@ describe("#head", () => {
     });
   });
 });
+
+describe("#tail", () => {
+  test("returns tail after a process of prepending", () => {
+    const myList = new LinkedList();
+    myList.prepend(10);
+    myList.prepend(20);
+
+    expect(myList.tail()).toEqual({
+      value: 10,
+      next: null,
+    });
+  });
+  test("returns tail after a process of appending", () => {
+    const myList = new LinkedList();
+    myList.append(10);
+    myList.append(20);
+
+    expect(myList.tail()).toEqual({
+      value: 20,
+      next: null,
+    });
+  });
+});

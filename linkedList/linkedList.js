@@ -34,11 +34,27 @@ class LinkedList {
   head() {
     return this.HEAD;
   }
-  tail() {}
+
+  tail() {
+    let current = this.HEAD;
+    let listTail = current;
+
+    while (current) {
+      listTail = current;
+      current = current.next;
+    }
+
+    return listTail;
+  }
+
   at(index) {}
+
   pop() {}
+
   contains(value) {}
+
   find(value) {}
+
   toString() {
     let listString = "";
     let current = this.HEAD;
