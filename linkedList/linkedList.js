@@ -1,6 +1,6 @@
 class LinkedList {
   constructor() {
-    this.head = null;
+    this.HEAD = null;
     this.length = 0;
   }
 
@@ -8,12 +8,12 @@ class LinkedList {
     const newNode = new ListNode(value, null);
     this.length++;
 
-    if (this.head === null) {
-      this.head = newNode;
+    if (this.HEAD === null) {
+      this.HEAD = newNode;
       return;
     }
 
-    let current = this.head;
+    let current = this.HEAD;
     while (current.next) {
       let next = current.next;
       current = next;
@@ -22,8 +22,8 @@ class LinkedList {
   }
 
   prepend(value) {
-    const newNode = new ListNode(value, this.head);
-    this.head = newNode;
+    const newNode = new ListNode(value, this.HEAD);
+    this.HEAD = newNode;
     this.length++;
   }
 
@@ -32,7 +32,7 @@ class LinkedList {
   }
 
   head() {
-    return this.head;
+    return this.HEAD;
   }
   tail() {}
   at(index) {}
@@ -41,7 +41,7 @@ class LinkedList {
   find(value) {}
   toString() {
     let listString = "";
-    let current = this.head;
+    let current = this.HEAD;
 
     while (current) {
       listString += `[${current.value}]->`;

@@ -8,8 +8,8 @@ describe("#append", () => {
     myList.append(10);
     myList.append(20);
 
-    expect(myList.head.value).toBe(10);
-    expect(myList.head.next.value).toBe(20);
+    expect(myList.HEAD.value).toBe(10);
+    expect(myList.HEAD.next.value).toBe(20);
     expect(myList.length).toBe(2);
   });
 });
@@ -18,11 +18,11 @@ describe("#prepend", () => {
   test("adds a new node containing value to the start of the list", () => {
     const myList = new LinkedList();
     myList.prepend(10);
-    const oldHead = myList.head;
+    const oldHead = myList.HEAD;
     myList.prepend(20);
 
-    expect(myList.head.value).toBe(20);
-    expect(myList.head.next).toBe(oldHead);
+    expect(myList.HEAD.value).toBe(20);
+    expect(myList.HEAD.next).toBe(oldHead);
     expect(myList.length).toBe(2);
   });
 });
@@ -51,18 +51,28 @@ describe("#size", () => {
 describe("#head", () => {
   test("returns head after a process of prepending", () => {
     const myList = new LinkedList();
-    const myHead = new ListNode(20);
     myList.prepend(10);
-    myList.prepend(myHead);
+    myList.prepend(20);
 
-    expect(myList.head()).toBe(myHead);
+    expect(myList.head()).toEqual({
+      value: 20,
+      next: {
+        value: 10,
+        next: null,
+      },
+    });
   });
   test("returns head after a process of appending", () => {
     const myList = new LinkedList();
-    const myHead = new ListNode(10);
-    myList.append(myHead);
+    myList.append(10);
     myList.append(20);
 
-    expect(myList.head()).toBe(myHead);
+    expect(myList.head()).toEqual({
+      value: 10,
+      next: {
+        value: 20,
+        next: null,
+      },
+    });
   });
 });
