@@ -9,7 +9,9 @@ class LinkedList {
     this.head = newNode;
     this.length++;
   }
-  size() {}
+  size() {
+    return this.length;
+  }
   head() {}
   tail() {}
   at(index) {}
