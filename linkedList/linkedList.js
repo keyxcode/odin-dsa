@@ -3,7 +3,13 @@ class LinkedList {
     this.head = null;
     this.length = 0;
   }
-  append(value) {}
+  append(value) {
+    const newNode = new ListNode(value, null);
+    if (this.head === null) {
+      this.head = newNode;
+      return;
+    }
+  }
   prepend(value) {
     const newNode = new ListNode(value, this.head);
     this.head = newNode;

@@ -2,6 +2,18 @@ const linkedListModule = require("./linkedList");
 const ListNode = linkedListModule.ListNode;
 const LinkedList = linkedListModule.LinkedList;
 
+describe("#append", () => {
+  test("adds a new node containing value to the end of the list", () => {
+    const myList = new LinkedList();
+    myList.append(10);
+    myList.append(20);
+
+    expect(myList.head.value).toBe(10);
+    expect(myList.head.next.value).toBe(20);
+    expect(myList.length).toBe(2);
+  });
+});
+
 describe("#prepend", () => {
   test("adds a new node containing value to the start of the list", () => {
     const myList = new LinkedList();
