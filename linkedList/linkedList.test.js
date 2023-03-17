@@ -25,3 +25,13 @@ describe("#toString", () => {
     expect(myList.toString()).toEqual("[20]->[10]->null");
   });
 });
+
+// describe("#size", () => {
+//   test("returns the total number of nodes", () => {
+//     const myList = new LinkedList();
+//     myList.prepend(10);
+//     myList.prepend(20);
+
+//     expect(myList.size()).toBe(2);
+//   });
+// });

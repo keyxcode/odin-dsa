@@ -1,6 +1,6 @@
 class LinkedList {
   constructor() {
-    this.head = new ListNode();
+    this.head = null;
     this.length = 0;
   }
   append(value) {}
@@ -19,19 +19,17 @@ class LinkedList {
   toString() {
     let listString = "";
     let listHead = this.head;
-    while (listHead.next !== null) {
+
+    while (listHead) {
       listString += `[${listHead.value}]->`;
       listHead = listHead.next;
-      if (listHead.value === null) {
-        listString += "null";
-      }
     }
-    return listString;
+    return `${listString}null`;
   }
 }
 
 class ListNode {
-  constructor(value = null, next = null) {
+  constructor(value, next) {
     this.value = value;
     this.next = next;
   }
