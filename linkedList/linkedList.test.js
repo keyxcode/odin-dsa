@@ -200,38 +200,64 @@ describe("#insertAt", () => {
     myList.prepend(10);
     myList.prepend(20);
     myList.prepend(30);
-    myList.insertAt(40, 2);
+    myList.insertAt(40, 1);
 
-    // expect(myList.at(2)).toEqual({
-    //   value: 40,
-    //   next: {
-    //     value: 30,
-    //     next: null,
-    //   },
-    // });
+    expect(myList.at(1)).toEqual({
+      value: 40,
+      next: {
+        value: 20,
+        next: {
+          value: 10,
+          next: null,
+        },
+      },
+    });
   });
-  test("inserts a new node with the provided value and an index larger than the list length", () => {
+  test("appends a new node if the provided index is outside the list length", () => {
     const myList = new LinkedList();
     myList.prepend(10);
     myList.prepend(20);
     myList.insertAt(40, 4);
 
-    // expect(myList.at(2)).toEqual({
-    //   value: 40,
-    //   next: {
-    //     value: 30,
-    //     next: null,
-    //   },
-    // });
+    expect(myList.at(2)).toEqual({
+      value: 40,
+      next: null,
+    });
   });
-});
-
-describe("#removeAt", () => {
-  test("removes the node at the given index", () => {
+  test("prepends a new node if the provided index is less than or equal to 0", () => {
     const myList = new LinkedList();
     myList.prepend(10);
     myList.prepend(20);
+    myList.insertAt(40, -1);
 
-    // expect(myList.removeAt(0)).toEqual();
+    expect(myList.at(0)).toEqual({
+      value: 40,
+      next: {
+        value: 20,
+        next: {
+          value: 10,
+          next: null,
+        },
+      },
+    });
+  });
+  test("makes the new node the head if the list is empty", () => {
+    const myList = new LinkedList();
+    myList.insertAt(40, 2);
+
+    expect(myList.at(0)).toEqual({
+      value: 40,
+      next: null,
+    });
   });
 });
+
+// describe("#removeAt", () => {
+//   test("removes the node at the given index", () => {
+//     const myList = new LinkedList();
+//     myList.prepend(10);
+//     myList.prepend(20);
+
+//     expect(myList.removeAt(0)).toEqual();
+//   });
+// });
