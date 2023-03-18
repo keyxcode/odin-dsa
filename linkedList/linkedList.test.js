@@ -252,12 +252,53 @@ describe("#insertAt", () => {
   });
 });
 
-// describe("#removeAt", () => {
-//   test("removes the node at the given index", () => {
-//     const myList = new LinkedList();
-//     myList.prepend(10);
-//     myList.prepend(20);
+describe("#removeAt", () => {
+  test("removes the node at the given index", () => {
+    const myList = new LinkedList();
+    myList.prepend(1);
+    myList.prepend(2);
+    myList.prepend(3);
+    myList.removeAt(0);
 
-//     expect(myList.removeAt(0)).toEqual();
-//   });
-// });
+    expect(myList.at(0)).toEqual({
+      value: 2,
+      next: {
+        value: 1,
+        next: null,
+      },
+    });
+    expect(myList.length).toBe(2);
+  });
+  test("removes the node at the given index", () => {
+    const myList = new LinkedList();
+    myList.prepend(1);
+    myList.prepend(2);
+    myList.prepend(3);
+    myList.removeAt(1);
+
+    expect(myList.at(0)).toEqual({
+      value: 3,
+      next: {
+        value: 1,
+        next: null,
+      },
+    });
+    expect(myList.length).toBe(2);
+  });
+  test("returns false if the index is outside the list range", () => {
+    const myList = new LinkedList();
+    myList.prepend(1);
+    myList.prepend(2);
+    myList.prepend(3);
+
+    expect(myList.removeAt(-1)).toBe(false);
+    expect(myList.removeAt(3)).toBe(false);
+    expect(myList.length).toBe(3);
+  });
+  test("returns false if the list empty", () => {
+    const myList = new LinkedList();
+    expect(myList.removeAt(0)).toBe(false);
+    expect(myList.removeAt(-2)).toBe(false);
+    expect(myList.removeAt(3)).toBe(false);
+  });
+});
