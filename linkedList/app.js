@@ -4,8 +4,10 @@ const LinkedList = linkedListModule.LinkedList;
 
 const myList = new LinkedList();
 myList.prepend(1);
-myList.append(2);
+myList.prepend(2);
+myList.prepend(3);
 console.log(myList.toString());
 
-myList.insertAt(3, -1);
+myList.removeAt(3);
 console.log(myList.toString());
+console.log(myList.length);

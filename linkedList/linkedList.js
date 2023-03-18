@@ -123,7 +123,23 @@ class LinkedList {
     prevNode.next = newNode;
   }
 
-  removeAt(index) {}
+  removeAt(index) {
+    if (index < 0 || index > this.length - 1) return false;
+
+    if (index === 0) {
+      this.HEAD = this.at(index + 1);
+      this.length--;
+      return;
+    }
+
+    // console.log(this.at(index - 1));
+    // console.log(this.at(index));
+    // console.log(this.at(index + 1));
+    const prevNode = this.at(index - 1);
+    const nextNode = this.at(index + 1);
+    prevNode.next = nextNode;
+    this.length--;
+  }
 }
 
 class ListNode {
