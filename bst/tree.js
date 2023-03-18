@@ -1,9 +1,13 @@
 class Tree {
   constructor(myArray) {
-    this.root = this.buildTree(myArray);
+    const myArrayCopy = myArray.slice();
+    myArrayCopy.sort((a, b) => {
+      return a - b;
+    });
+    this.root = this.buildTree(myArrayCopy);
   }
   buildTree(myArray) {
-    return;
+    return myArray;
   }
 }
 
