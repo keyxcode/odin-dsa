@@ -106,7 +106,22 @@ class LinkedList {
     return `${listString}null`;
   }
 
-  insertAt(value, index) {}
+  insertAt(value, index) {
+    if (index <= 0) {
+      this.prepend(value);
+      return;
+    }
+    if (index > this.length - 1) {
+      this.append(value);
+      return;
+    }
+
+    const newNode = new ListNode(value);
+    let targetNode = this.at(index);
+    const prevNode = this.at(index - 1);
+    newNode.next = targetNode;
+    prevNode.next = newNode;
+  }
 
   removeAt(index) {}
 }
