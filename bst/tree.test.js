@@ -56,7 +56,7 @@ describe("#buildTree", () => {
   test("builds tree form an empty array", () => {
     const myTree = new Tree([]);
 
-    expect(myTree).toBe(false);
+    expect(myTree).toEqual({});
   });
 
   test("builds tree form an array with 1 element", () => {
