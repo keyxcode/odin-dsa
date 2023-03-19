@@ -10,19 +10,19 @@ class Tree {
   }
 
   buildTree(myArray) {
-    const myArrayCopy = myArray.slice();
-    const myArrayLength = myArrayCopy.length;
+    const myArrayUnique = [...new Set(myArray)];
+    const myArrayLength = myArrayUnique.length;
 
     if (myArrayLength === 0) return null;
     if (myArrayLength === 1) {
-      return new TreeNode(myArrayCopy[0], null, null);
+      return new TreeNode(myArrayUnique[0], null, null);
     }
 
     const middleIndex = Math.floor(myArrayLength / 2);
-    const middleElement = myArrayCopy[middleIndex];
+    const middleElement = myArrayUnique[middleIndex];
 
-    const leftHalf = myArrayCopy.slice(0, middleIndex);
-    const rightHalf = myArrayCopy.slice(middleIndex + 1, myArrayLength);
+    const leftHalf = myArrayUnique.slice(0, middleIndex);
+    const rightHalf = myArrayUnique.slice(middleIndex + 1, myArrayLength);
 
     return new TreeNode(
       middleElement,
