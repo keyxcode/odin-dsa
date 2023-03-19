@@ -1,6 +1,5 @@
 class Tree {
   constructor(myArray) {
-    console.log("hi");
     if (myArray.length === 0) return;
 
     const myArrayCopy = myArray.slice();
