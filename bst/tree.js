@@ -1,14 +1,13 @@
 class Tree {
   constructor(myArray) {
-    if (myArray.length === 0) return;
+    if (myArray.length === 0) return (this.root = null);
 
     const myArrayCopy = myArray.slice();
     myArrayCopy.sort((a, b) => {
       return a - b;
     });
 
-    const rootNode = this.buildTree(myArrayCopy);
-    return rootNode;
+    this.root = this.buildTree(myArrayCopy);
   }
 
   buildTree(myArray) {
@@ -32,10 +31,29 @@ class Tree {
       this.buildTree(rightHalf)
     );
   }
+
+  insert(value) {
+    if (this.root.left === "undefined" && this.root.right === "undefined") {
+      this.root.value = value;
+    }
+
+    let currentNode = this.root;
+    let currentDirection;
+
+    while (currentNode) {
+      currentDirection = value < currentNode.value ? "left" : "right";
+
+      if (currentNode[currentDirection] === null) {
+        currentNode[currentDirection] = new TreeNode(value);
+        return;
+      }
+      currentNode = currentNode[currentDirection];
+    }
+  }
 }
 
 class TreeNode {
-  constructor(value, left, right) {
+  constructor(value, left = null, right = null) {
     this.value = value;
     this.left = left;
     this.right = right;
