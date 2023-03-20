@@ -70,15 +70,26 @@ class Tree {
   }
 
   remove(value, currentNode = this.root) {
-    if (currentNode === null) return false;
+    // if the value to be removed can't be found
+    if (currentNode === null) return currentNode;
 
+    // base case
     if (value === currentNode.value) {
       if (currentNode.left === null && currentNode.right === null) {
-        // if the node to be removed is a leaf
+        // the node to be removed is a leaf
         currentNode = null;
       } else if (currentNode.left === null || currentNode.right === null) {
-        // if the node to be removed has 1 child
+        // the node to be removed has 1 child
+        // the root could end up here due to tree manipulation => unbalanced tree
+        if (currentNode === this.root) {
+          this.root = currentNode.left ? currentNode.left : currentNode.right;
+        }
         currentNode = currentNode.left ? currentNode.left : currentNode.right;
+      } else {
+        // the node to be removed has 2 children
+        const nextLargestValue = this.findSmallestChild(currentNode.right);
+        this.remove(nextLargestValue);
+        currentNode.value = nextLargestValue;
       }
     } else if (value < currentNode.value) {
       currentNode.left = this.remove(value, currentNode.left);
@@ -96,6 +107,11 @@ class Tree {
       return this.find(value, currentNode.left);
     else if (value > currentNode.value)
       return this.find(value, currentNode.right);
+  }
+
+  findSmallestChild(childNode) {
+    if (childNode.left === null) return childNode.value;
+    return this.findSmallestChild(childNode.left);
   }
 }
 
