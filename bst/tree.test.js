@@ -127,3 +127,43 @@ describe("#insertNode", () => {
     });
   });
 });
+
+describe("#find", () => {
+  test("returns the node with the value looking for where it's the root", () => {
+    const myTree = new Tree([1, 3, 5]);
+
+    expect(myTree.find(3)).toEqual({
+      value: 3,
+      left: {
+        value: 1,
+        left: null,
+        right: null,
+      },
+      right: {
+        value: 5,
+        left: null,
+        right: null,
+      },
+    });
+  });
+
+  test("returns the node with the value looking for where it's not the root", () => {
+    const myTree = new Tree([1, 2, 3, 4, 5]);
+
+    expect(myTree.find(2)).toEqual({
+      value: 2,
+      left: {
+        value: 1,
+        left: null,
+        right: null,
+      },
+      right: null,
+    });
+  });
+
+  test("returns false if the node looking for is not found", () => {
+    const myTree = new Tree([1, 2, 3, 4, 5]);
+
+    expect(myTree.find(6)).toBe(false);
+  });
+});
