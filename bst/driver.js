@@ -25,7 +25,8 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
 // myTree.insert(11210);
 // console.log(myTree);
 // console.log(myTree.find(6));
-const myTree = new Tree([1, 2, 3, 4, 5, 6]);
+const myTree = new Tree([1, 2, 3, 4, 5]);
+myTree.remove(5);
 prettyPrint(myTree.root);
 
 // const myEmptyTree = new Tree([]);

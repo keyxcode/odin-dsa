@@ -69,7 +69,25 @@ class Tree {
     return currentNode;
   }
 
-  remove(value) {}
+  remove(value, currentNode = this.root) {
+    if (currentNode === null) return false;
+
+    if (value === currentNode.value) {
+      if (currentNode.left === null && currentNode.right === null) {
+        // if the node to be removed is a leaf
+        currentNode = null;
+      } else if (currentNode.left === null || currentNode.right === null) {
+        // if the node to be removed has 1 child
+        currentNode = currentNode.left ? currentNode.left : currentNode.right;
+      }
+    } else if (value < currentNode.value) {
+      currentNode.left = this.remove(value, currentNode.left);
+    } else if (value > currentNode.value) {
+      currentNode.right = this.remove(value, currentNode.right);
+    }
+
+    return currentNode;
+  }
 
   find(value, currentNode = this.root) {
     if (currentNode === null) return false;
