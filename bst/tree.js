@@ -32,7 +32,7 @@ class Tree {
     );
   }
 
-  insert(value) {
+  insertIterative(value) {
     if (this.root.left === "undefined" && this.root.right === "undefined") {
       this.root.value = value;
     }
@@ -49,6 +49,24 @@ class Tree {
       }
       currentNode = currentNode[currentDirection];
     }
+  }
+
+  insert(value, currentNode = this.root) {
+    // Inserts a new element to a leaf of the tree and returns the new root
+    if (this.root === null) return (this.root = new TreeNode(value));
+
+    if (currentNode === null) {
+      return new TreeNode(value);
+    }
+    if (value === currentNode.value) {
+      return currentNode;
+    }
+    if (value < currentNode.value) {
+      currentNode.left = this.insert(value, currentNode.left);
+    } else {
+      currentNode.right = this.insert(value, currentNode.right);
+    }
+    return currentNode;
   }
 }
 
