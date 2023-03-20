@@ -167,3 +167,76 @@ describe("#find", () => {
     expect(myTree.find(6)).toBe(false);
   });
 });
+
+describe("#remove", () => {
+  test("remove a node that is a leaf", () => {
+    const myTree = new Tree([1, 2, 3, 4, 5]);
+    myTree.remove(1);
+
+    expect(myTree.root).toEqual({
+      value: 3,
+      left: {
+        value: 2,
+        left: null,
+        right: null,
+      },
+      right: {
+        value: 5,
+        left: {
+          value: 4,
+          left: null,
+          right: null,
+        },
+        right: null,
+      },
+    });
+  });
+  test("remove a node that has one child", () => {
+    const myTree = new Tree([1, 2, 3, 4, 5]);
+    myTree.remove(2);
+
+    expect(myTree.root).toEqual({
+      value: 3,
+      left: {
+        value: 1,
+        left: null,
+        right: null,
+      },
+      right: {
+        value: 5,
+        left: {
+          value: 4,
+          left: null,
+          right: null,
+        },
+        right: null,
+      },
+    });
+  });
+  test("remove a node that has two children", () => {
+    const myTree = new Tree([1, 2, 3, 4, 5, 6]);
+    myTree.remove(4);
+
+    expect(myTree.root).toEqual({
+      value: 5,
+      left: {
+        value: 2,
+        left: {
+          value: 1,
+          left: null,
+          right: null,
+        },
+        right: {
+          value: 3,
+          left: null,
+          right: null,
+        },
+      },
+      right: {
+        value: 6,
+        left: null,
+        right: null,
+      },
+    });
+  });
+});
