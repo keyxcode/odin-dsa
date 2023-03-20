@@ -72,7 +72,12 @@ class Tree {
   remove(value) {}
 
   find(value, currentNode = this.root) {
+    if (currentNode === null) return false;
     if (value === currentNode.value) return currentNode;
+    else if (value < currentNode.value)
+      return this.find(value, currentNode.left);
+    else if (value > currentNode.value)
+      return this.find(value, currentNode.right);
   }
 }
 
