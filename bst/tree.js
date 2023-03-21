@@ -114,7 +114,24 @@ class Tree {
     return this.findSmallestChild(childNode.left);
   }
 
-  levelOrder(callback) {}
+  levelOrderIterative(callback) {
+    const myQueue = [this.root];
+    const visitedNodes = [];
+
+    while (myQueue.length > 0) {
+      const discoveredNode = myQueue.shift();
+      if (callback) {
+        callback(discoveredNode);
+      } else {
+        visitedNodes.push(discoveredNode.value);
+      }
+
+      if (discoveredNode.left) myQueue.push(discoveredNode.left);
+      if (discoveredNode.right) myQueue.push(discoveredNode.right);
+    }
+
+    if (!callback) return visitedNodes;
+  }
 }
 
 class TreeNode {

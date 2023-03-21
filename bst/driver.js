@@ -40,6 +40,7 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
 
 const myTree = new Tree([1, 2, 3, 4, 5]);
 prettyPrint(myTree.root);
+console.log(myTree.levelOrderIterative());
 
 // const myEmptyTree = new Tree([]);
 // console.log(myEmptyTree);
