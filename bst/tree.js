@@ -113,6 +113,8 @@ class Tree {
     if (childNode.left === null) return childNode.value;
     return this.findSmallestChild(childNode.left);
   }
+
+  levelOrder(callback) {}
 }
 
 class TreeNode {

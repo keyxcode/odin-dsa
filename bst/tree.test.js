@@ -240,3 +240,10 @@ describe("#remove", () => {
     });
   });
 });
+
+describe("#levelOrder", () => {
+  test("returns an array of values from the tree when no callback is given", () => {
+    const myTree = new Tree([1, 2, 3, 4, 5]);
+    expect(myTree.levelOrder()).toEqual([3, 2, 5, 1, 4]);
+  });
+});
