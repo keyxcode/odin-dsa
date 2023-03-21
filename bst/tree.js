@@ -132,6 +132,25 @@ class Tree {
 
     if (!callback) return visitedNodes;
   }
+
+  levelOrderRecursive(callback) {
+    const levelOrderNodes = this.childrenLR([this.root]);
+    if (callback) {
+      levelOrderNodes.forEach((node) => callback(node));
+    } else return levelOrderNodes.map((node) => node.value);
+  }
+  childrenLR(currentLevelNodes) {
+    const nextLevelNodes = [];
+
+    currentLevelNodes.forEach((node) => {
+      if (node.left) nextLevelNodes.push(node.left);
+      if (node.right) nextLevelNodes.push(node.right);
+    });
+
+    if (nextLevelNodes.length)
+      return currentLevelNodes.concat(this.childrenLR(nextLevelNodes));
+    else return currentLevelNodes;
+  }
 }
 
 class TreeNode {
