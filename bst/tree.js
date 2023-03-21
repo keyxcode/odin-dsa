@@ -32,24 +32,38 @@ class Tree {
     );
   }
 
-  // insertIterative(value) {
-  //   if (this.root.left === "undefined" && this.root.right === "undefined") {
-  //     this.root.value = value;
-  //   }
+  prettyPrint(node = this.root, prefix = "", isLeft = true) {
+    if (node.right !== null) {
+      this.prettyPrint(
+        node.right,
+        `${prefix}${isLeft ? "│   " : "    "}`,
+        false
+      );
+    }
+    console.log(`${prefix}${isLeft ? "└── " : "┌── "}${node.value}`);
+    if (node.left !== null) {
+      this.prettyPrint(node.left, `${prefix}${isLeft ? "    " : "│   "}`, true);
+    }
+  }
 
-  //   let currentNode = this.root;
-  //   let currentDirection;
+  insertIterative(value) {
+    if (this.root.left === "undefined" && this.root.right === "undefined") {
+      this.root.value = value;
+    }
 
-  //   while (currentNode) {
-  //     currentDirection = value < currentNode.value ? "left" : "right";
+    let currentNode = this.root;
+    let currentDirection;
 
-  //     if (currentNode[currentDirection] === null) {
-  //       currentNode[currentDirection] = new TreeNode(value);
-  //       return;
-  //     }
-  //     currentNode = currentNode[currentDirection];
-  //   }
-  // }
+    while (currentNode) {
+      currentDirection = value < currentNode.value ? "left" : "right";
+
+      if (currentNode[currentDirection] === null) {
+        currentNode[currentDirection] = new TreeNode(value);
+        return;
+      }
+      currentNode = currentNode[currentDirection];
+    }
+  }
 
   insert(value, currentNode = this.root) {
     // Inserts a new element to a leaf of the tree and returns the new root
@@ -118,7 +132,7 @@ class Tree {
     const myQueue = [this.root];
     const visitedNodes = [];
 
-    while (myQueue.length > 0) {
+    while (myQueue.length) {
       const discoveredNode = myQueue.shift();
       if (callback) {
         callback(discoveredNode);
