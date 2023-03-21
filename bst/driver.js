@@ -38,9 +38,13 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
 // myTree.remove(9);
 // prettyPrint(myTree.root);
 
-const myTree = new Tree([1, 2, 3, 4, 5, 6, 7]);
+const myTree = new Tree([1, 2, 3, 4, 5, 6]);
 prettyPrint(myTree.root);
-console.log(myTree.levelOrderRecursive());
+myTree.insert(7);
+prettyPrint(myTree.root);
+myTree.insert(9);
+prettyPrint(myTree.root);
+console.log(myTree.inorder());
 
 // const myEmptyTree = new Tree([]);
 // console.log(myEmptyTree);

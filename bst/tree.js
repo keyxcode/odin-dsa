@@ -153,11 +153,38 @@ class Tree {
     else return currentLevelNodes;
   }
 
-  inorder(callback) {}
+  inorder(callback) {
+    // left-root-right
+    const inorderListNodes = this.getInorderNodesFrom(this.root);
+    const inorderListValues = inorderListNodes.map((node) => node.value);
+    return inorderListValues;
+  }
 
-  preorder(callback) {}
+  getInorderNodesFrom(currentNode) {
+    if (currentNode.left === null && currentNode.right === null) {
+      return [currentNode];
+    }
 
-  postorder(callback) {}
+    if (currentNode.left && currentNode.right) {
+      return [
+        ...this.getInorderNodesFrom(currentNode.left),
+        currentNode,
+        ...this.getInorderNodesFrom(currentNode.right),
+      ];
+    } else if (currentNode.left) {
+      return [...this.getInorderNodesFrom(currentNode.left), currentNode];
+    } else {
+      return [currentNode, ...this.getInorderNodesFrom(currentNode.right)];
+    }
+  }
+
+  preorder(callback) {
+    // root-left-right
+  }
+
+  postorder(callback) {
+    // left-right-root
+  }
 }
 
 class TreeNode {
