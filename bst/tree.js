@@ -87,7 +87,7 @@ class Tree {
         currentNode = currentNode.left ? currentNode.left : currentNode.right;
       } else {
         // the node to be removed has 2 children
-        const nextLargestValue = this.findSmallestChild(currentNode.right);
+        const nextLargestValue = this.#findSmallestChild(currentNode.right);
         this.remove(nextLargestValue);
         currentNode.value = nextLargestValue;
       }
@@ -109,9 +109,9 @@ class Tree {
       return this.find(value, currentNode.right);
   }
 
-  findSmallestChild(childNode) {
+  #findSmallestChild(childNode) {
     if (childNode.left === null) return childNode.value;
-    return this.findSmallestChild(childNode.left);
+    return this.#findSmallestChild(childNode.left);
   }
 
   levelOrderIterative(callback) {
@@ -134,12 +134,13 @@ class Tree {
   }
 
   levelOrderRecursive(callback) {
-    const levelOrderNodes = this.childrenLR([this.root]);
+    const levelOrderNodes = this.#childrenLR([this.root]);
     if (callback) {
       levelOrderNodes.forEach((node) => callback(node));
     } else return levelOrderNodes.map((node) => node.value);
   }
-  childrenLR(currentLevelNodes) {
+
+  #childrenLR(currentLevelNodes) {
     const nextLevelNodes = [];
 
     currentLevelNodes.forEach((node) => {
@@ -148,9 +149,15 @@ class Tree {
     });
 
     if (nextLevelNodes.length)
-      return currentLevelNodes.concat(this.childrenLR(nextLevelNodes));
+      return currentLevelNodes.concat(this.#childrenLR(nextLevelNodes));
     else return currentLevelNodes;
   }
+
+  inorder(callback) {}
+
+  preorder(callback) {}
+
+  postorder(callback) {}
 }
 
 class TreeNode {

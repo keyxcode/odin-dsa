@@ -251,3 +251,24 @@ describe("#levelOrder", () => {
     expect(myTree.levelOrderRecursive()).toEqual([3, 2, 5, 1, 4]);
   });
 });
+
+describe("#inorder", () => {
+  test("returns an array of values from the tree when no callback is given (iterative)", () => {
+    const myTree = new Tree([1, 2, 3, 4, 5, 6, 7]);
+    expect(myTree.inorder()).toEqual([1, 2, 3, 4, 5, 6, 7]);
+  });
+});
+
+describe("preorder", () => {
+  test("returns an array of values from the tree when no callback is given (iterative)", () => {
+    const myTree = new Tree([1, 2, 3, 4, 5, 6, 7]);
+    expect(myTree.preorder()).toEqual([4, 2, 1, 3, 6, 5, 7]);
+  });
+});
+
+describe("postorder", () => {
+  test("returns an array of values from the tree when no callback is given (iterative)", () => {
+    const myTree = new Tree([1, 2, 3, 4, 5, 6, 7]);
+    expect(myTree.postorder()).toEqual([1, 3, 2, 5, 7, 6, 4]);
+  });
+});
