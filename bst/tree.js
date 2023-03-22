@@ -170,6 +170,12 @@ class Tree {
   inorder(callback) {
     // left-root-right
     const inorderListNodes = this.getInorderNodesFrom(this.root);
+    if (callback) {
+      inorderListNodes.forEach((node) => {
+        callback(node);
+      });
+      return;
+    }
     const inorderListValues = inorderListNodes.map((node) => node.value);
     return inorderListValues;
   }
@@ -192,12 +198,38 @@ class Tree {
     }
   }
 
-  preorder(callback) {
-    // root-left-right
+  inorderOptimized(callback, currentNode = this.root, nodeList = []) {
+    // left-root-right
+
+    if (currentNode === null) return;
+
+    this.inorderOptimized(callback, currentNode.left, nodeList);
+    callback ? callback(currentNode) : nodeList.push(currentNode.value);
+    this.inorderOptimized(callback, currentNode.right, nodeList);
+
+    if (!callback) return nodeList;
   }
 
-  postorder(callback) {
+  preorder(callback, currentNode = this.root, nodeList = []) {
+    // root-left-right
+    if (currentNode === null) return;
+
+    callback ? callback(currentNode) : nodeList.push(currentNode.value);
+    this.preorder(callback, currentNode.left, nodeList);
+    this.preorder(callback, currentNode.right, nodeList);
+
+    if (!callback) return nodeList;
+  }
+
+  postorder(callback, currentNode = this.root, nodeList = []) {
     // left-right-root
+    if (currentNode === null) return;
+
+    this.postorder(callback, currentNode.left, nodeList);
+    this.postorder(callback, currentNode.right, nodeList);
+    callback ? callback(currentNode) : nodeList.push(currentNode.value);
+
+    if (!callback) return nodeList;
   }
 }
 

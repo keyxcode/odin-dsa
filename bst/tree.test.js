@@ -257,6 +257,11 @@ describe("#inorder", () => {
     const myTree = new Tree([1, 2, 3, 4, 5, 6, 7]);
     expect(myTree.inorder()).toEqual([1, 2, 3, 4, 5, 6, 7]);
   });
+
+  test("returns an array of values from the tree when no callback is given (iterative)", () => {
+    const myTree = new Tree([1, 2, 3, 4, 5, 6, 7]);
+    expect(myTree.inorderOptimized()).toEqual([1, 2, 3, 4, 5, 6, 7]);
+  });
 });
 
 describe("preorder", () => {
