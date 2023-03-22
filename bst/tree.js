@@ -231,6 +231,14 @@ class Tree {
 
     if (!callback) return nodeList;
   }
+
+  height() {}
+
+  depth() {}
+
+  isBalanced() {}
+
+  rebalance() {}
 }
 
 class TreeNode {

@@ -264,16 +264,36 @@ describe("#inorder", () => {
   });
 });
 
-describe("preorder", () => {
+describe("#preorder", () => {
   test("returns an array of values from the tree when no callback is given (iterative)", () => {
     const myTree = new Tree([1, 2, 3, 4, 5, 6, 7]);
     expect(myTree.preorder()).toEqual([4, 2, 1, 3, 6, 5, 7]);
   });
 });
 
-describe("postorder", () => {
+describe("#postorder", () => {
   test("returns an array of values from the tree when no callback is given (iterative)", () => {
     const myTree = new Tree([1, 2, 3, 4, 5, 6, 7]);
     expect(myTree.postorder()).toEqual([1, 3, 2, 5, 7, 6, 4]);
+  });
+});
+
+describe("#height", () => {
+  test("returns the length of the longest path from this node to a leaf", () => {
+    const myTree = new Tree([1, 2, 3, 4, 5, 6, 7, 8]);
+    expect(myTree.height(6)).toBe(0);
+    expect(myTree.height(7)).toBe(1);
+    expect(myTree.height(3)).toBe(2);
+    expect(myTree.height(5)).toBe(3);
+  });
+});
+
+describe("#depth", () => {
+  test("returns the length of the path from this node to the root", () => {
+    const myTree = new Tree([1, 2, 3, 4, 5, 6, 7, 8]);
+    expect(myTree.depth(6)).toBe(2);
+    expect(myTree.depth(7)).toBe(1);
+    expect(myTree.depth(1)).toBe(3);
+    expect(myTree.depth(5)).toBe(0);
   });
 });
