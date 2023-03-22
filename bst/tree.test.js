@@ -281,19 +281,27 @@ describe("#postorder", () => {
 describe("#height", () => {
   test("returns the length of the longest path from this node to a leaf", () => {
     const myTree = new Tree([1, 2, 3, 4, 5, 6, 7, 8]);
-    expect(myTree.height(6)).toBe(0);
-    expect(myTree.height(7)).toBe(1);
-    expect(myTree.height(3)).toBe(2);
-    expect(myTree.height(5)).toBe(3);
+    const node_6 = myTree.find(6);
+    const node_7 = myTree.find(7);
+    const node_3 = myTree.find(3);
+    const node_5 = myTree.find(5);
+    expect(myTree.height(node_6)).toBe(0);
+    expect(myTree.height(node_7)).toBe(1);
+    expect(myTree.height(node_3)).toBe(2);
+    expect(myTree.height(node_5)).toBe(3);
   });
 });
 
 describe("#depth", () => {
   test("returns the length of the path from this node to the root", () => {
     const myTree = new Tree([1, 2, 3, 4, 5, 6, 7, 8]);
-    expect(myTree.depth(6)).toBe(2);
-    expect(myTree.depth(7)).toBe(1);
-    expect(myTree.depth(1)).toBe(3);
-    expect(myTree.depth(5)).toBe(0);
+    const node_6 = myTree.find(6);
+    const node_7 = myTree.find(7);
+    const node_3 = myTree.find(3);
+    const node_5 = myTree.find(5);
+    expect(myTree.depth(node_6)).toBe(2);
+    expect(myTree.depth(node_7)).toBe(1);
+    expect(myTree.depth(node_3)).toBe(3);
+    expect(myTree.depth(node_5)).toBe(0);
   });
 });

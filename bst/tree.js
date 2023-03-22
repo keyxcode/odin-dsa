@@ -232,7 +232,17 @@ class Tree {
     if (!callback) return nodeList;
   }
 
-  height() {}
+  height(node, measure = 0) {
+    if (node === null) return 0;
+    if (node.left === null && node.right === null) {
+      return measure;
+    }
+    measure += 1;
+    return Math.max(
+      this.height(node.left, measure),
+      this.height(node.right, measure)
+    );
+  }
 
   depth() {}
 
