@@ -261,7 +261,10 @@ class Tree {
     return Math.abs(leftHeight - rightHeight) <= 1;
   }
 
-  rebalance() {}
+  rebalance() {
+    const newTreeArray = this.inorder();
+    this.root = this.buildTree(newTreeArray);
+  }
 }
 
 class TreeNode {

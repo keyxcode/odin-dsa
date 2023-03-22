@@ -320,3 +320,14 @@ describe("#isBalanced", () => {
     expect(myTree.isBalanced()).toBe(false);
   });
 });
+
+describe("#rebalance", () => {
+  test("rebalances an unbalanced tree", () => {
+    const myTree = new Tree([1, 2, 3]);
+    myTree.insert(9);
+    myTree.remove(1);
+    expect(myTree.isBalanced()).toBe(false);
+    myTree.rebalance();
+    expect(myTree.isBalanced()).toBe(true);
+  });
+});
