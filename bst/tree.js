@@ -244,7 +244,13 @@ class Tree {
     );
   }
 
-  depth() {}
+  depth(node, currentNode = this.root) {
+    if (node.value === currentNode.value) return 0;
+
+    if (node.value < currentNode.value) {
+      return this.depth(node, currentNode.left) + 1;
+    } else return this.depth(node, currentNode.right) + 1;
+  }
 
   isBalanced() {}
 

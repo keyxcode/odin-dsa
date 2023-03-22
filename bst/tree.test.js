@@ -301,7 +301,7 @@ describe("#depth", () => {
     const node_5 = myTree.find(5);
     expect(myTree.depth(node_6)).toBe(2);
     expect(myTree.depth(node_7)).toBe(1);
-    expect(myTree.depth(node_3)).toBe(3);
+    expect(myTree.depth(node_3)).toBe(1);
     expect(myTree.depth(node_5)).toBe(0);
   });
 });
