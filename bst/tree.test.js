@@ -305,3 +305,18 @@ describe("#depth", () => {
     expect(myTree.depth(node_5)).toBe(0);
   });
 });
+
+describe("#isBalanced", () => {
+  test("returns true if a tree is balanced", () => {
+    const myTree = new Tree([1, 2, 3, 4, 5, 6, 7]);
+    expect(myTree.isBalanced()).toBe(true);
+    const myTree2 = new Tree([1, 2, 3, 4, 5, 6]);
+    expect(myTree2.isBalanced()).toBe(true);
+  });
+  test("returns false if a tree is unbalanced", () => {
+    const myTree = new Tree([1, 2, 3, 4, 5, 6, 7]);
+    myTree.insert(8);
+    myTree.insert(9);
+    expect(myTree.isBalanced()).toBe(false);
+  });
+});
